@@ -33,14 +33,14 @@ namespace PinusSylvestris.Core
             if (fader != null)
             {
                 // Fade the quad object in and delay for 0.75 seconds
-                StartCoroutine(FadeIn(0.75f, fader.GetComponent<Renderer>().material));
+                StartCoroutine(Utils.Fade(0.75f, fader.GetComponent<Renderer>().material, false));
                 yield return new WaitForSeconds(0.75f);
 
                 // Change camera position
                 Camera.main.transform.parent.position = nextSphere.position;
 
                 // Fade out the quad object
-                StartCoroutine(FadeOut(0.75f, fader.GetComponent<Renderer>().material));
+                StartCoroutine(Utils.Fade(0.75f, fader.GetComponent<Renderer>().material, true));
                 yield return new WaitForSeconds(0.75f);
             }
             else
@@ -50,26 +50,37 @@ namespace PinusSylvestris.Core
             }
         }
 
-        private IEnumerator FadeIn(float time, Material material)
-        {
-            // Fade to black
-            while (material.color.a < 1.0f)
-            {
-                material.color = new Color(material.color.r, material.color.g, material.color.b,
-                    material.color.a + Time.deltaTime / time);
-                yield return null;
-            }
-        }
-
-        private IEnumerator FadeOut(float time, Material material)
-        {
-            // Fade to transparent
-            while (material.color.a > 0.0f)
-            {
-                material.color = new Color(material.color.r, material.color.g, material.color.b,
-                    material.color.a - Time.deltaTime / time);
-                yield return null;
-            }
-        }
+        // private IEnumerator FadeIn(float time, Material material)
+        // {
+        //     // Fade to black
+        //     while (material.color.a < 1.0f)
+        //     {
+        //         material.color = new Color(material.color.r, material.color.g, material.color.b,
+        //             material.color.a + Time.deltaTime / time);
+        //         yield return null;
+        //     }
+        // }
+        //
+        // private IEnumerator FadeOut(float time, Material material)
+        // {
+        //     // Fade to transparent
+        //     while (material.color.a > 0.0f)
+        //     {
+        //         material.color = new Color(material.color.r, material.color.g, material.color.b,
+        //             material.color.a - Time.deltaTime / time);
+        //         yield return null;
+        //     }
+        // }
+        //
+        // private static IEnumerator Fade(float time, Material material, bool fadeOut)
+        // {
+        //     // Fade to transparent
+        //     while (fadeOut ? material.color.a > 0.0f : material.color.a < 1.0f)
+        //     {
+        //         material.color = new Color(material.color.r, material.color.g, material.color.b,
+        //             material.color.a - Time.deltaTime / time);
+        //         yield return null;
+        //     }
+        // }
     }
 }
