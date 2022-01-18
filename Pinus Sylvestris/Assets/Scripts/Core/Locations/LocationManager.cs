@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Sylvestris.Core.SceneControl;
 using UnityEngine;
 
 namespace Sylvestris.Core.Locations {
@@ -24,15 +25,22 @@ namespace Sylvestris.Core.Locations {
         {
             return Instance.locations.Find(x => x.type == type);
         }
-
-        // Start is called before the first frame update
-        private void Start()
+        
+        public static Location GetLocation(int index)
         {
+            return Instance.locations[index];
         }
 
-        // Update is called once per frame
-        private void Update()
+        // Use this to change location based on index
+        public void GotoLocation(int index)
         {
+            ChangeLocation.ChangeSphere(GetLocation(index).Position);
+        }
+        
+        // Use this to change location based on index
+        public void GotoLocation(LocationType type)
+        {
+            ChangeLocation.ChangeSphere(GetLocation(type).Position);
         }
     }
 }

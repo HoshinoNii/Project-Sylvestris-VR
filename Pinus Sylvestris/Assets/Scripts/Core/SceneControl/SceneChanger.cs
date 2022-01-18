@@ -5,6 +5,20 @@ namespace Sylvestris.Core.SceneControl
 {
     public class SceneChanger : MonoBehaviour
     {
+        // singleton
+        private static SceneChanger instance;
+        public static SceneChanger Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = FindObjectOfType<SceneChanger>();
+                }
+                return instance;
+            }
+        }
+        
         // This ensures that we don't mash to change spheres
         private bool changing = false;
 
@@ -21,10 +35,10 @@ namespace Sylvestris.Core.SceneControl
                 Debug.LogWarning("No Fader object found on camera");
         }
 
-        public void ChangeSphere(Transform nextSphere)
+        public static void ChangeSphere(Transform nextSphere)
         {
             // Start fading process
-            StartCoroutine(FadeCamera(nextSphere));
+            Instance.StartCoroutine(Instance.FadeCamera(nextSphere));
         }
 
         private IEnumerator FadeCamera(Transform nextSphere)
