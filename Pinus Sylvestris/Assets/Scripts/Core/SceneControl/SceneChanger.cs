@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace PinusSylvestris.Core
+namespace Sylvestris.Core.SceneControl
 {
     public class SceneChanger : MonoBehaviour
     {
@@ -33,20 +33,20 @@ namespace PinusSylvestris.Core
             if (fader != null)
             {
                 // Fade the quad object in and delay for 0.75 seconds
-                StartCoroutine(Utils.Fade(0.75f, fader.GetComponent<Renderer>().material, false));
+                StartCoroutine(Utils.Utils.Fade(0.75f, fader.GetComponent<Renderer>().material, false));
                 yield return new WaitForSeconds(0.75f);
 
                 // Change camera position
-                Camera.main.transform.parent.position = nextSphere.position;
+                UnityEngine.Camera.main.transform.parent.position = nextSphere.position;
 
                 // Fade out the quad object
-                StartCoroutine(Utils.Fade(0.75f, fader.GetComponent<Renderer>().material, true));
+                StartCoroutine(Utils.Utils.Fade(0.75f, fader.GetComponent<Renderer>().material, true));
                 yield return new WaitForSeconds(0.75f);
             }
             else
             {
                 // No fader, so just swap the camera position
-                Camera.main.transform.parent.position = nextSphere.position;
+                UnityEngine.Camera.main.transform.parent.position = nextSphere.position;
             }
         }
 

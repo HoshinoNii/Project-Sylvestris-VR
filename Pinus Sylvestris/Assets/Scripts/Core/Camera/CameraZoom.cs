@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace PinusSylvestris.Core
+namespace Sylvestris.Core.Camera
 {
     public class CameraZoom : MonoBehaviour
     {
@@ -10,12 +10,12 @@ namespace PinusSylvestris.Core
             const float fovMax = 60.0f;
 
             if (Input.GetAxis("Mouse ScrollWheel") > 0) // Scroll forward
-                Camera.main.fieldOfView--;
+                UnityEngine.Camera.main.fieldOfView--;
 
             if (Input.GetAxis("Mouse ScrollWheel") < 0) // Scroll back
-                Camera.main.fieldOfView++;
+                UnityEngine.Camera.main.fieldOfView++;
 
-            Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView, fovMin, fovMax);
+            UnityEngine.Camera.main.fieldOfView = Mathf.Clamp(UnityEngine.Camera.main.fieldOfView, fovMin, fovMax);
 
             //if (Input.GetMouseButton(1))
             //{

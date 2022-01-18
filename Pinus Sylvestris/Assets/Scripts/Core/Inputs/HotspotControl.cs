@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace PinusSylvestris.Core
+namespace Sylvestris.Core.Inputs
 {
     public class HotspotControl : MonoBehaviour
     {

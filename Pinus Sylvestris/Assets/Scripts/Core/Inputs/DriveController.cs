@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace PinusSylvestris.Core
+namespace Sylvestris.Core.Inputs
 {
     public class DriveController : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace PinusSylvestris.Core
+namespace Sylvestris.Core.SceneControl
 {
     public class ChangeLocation : MonoBehaviour
     {
@@ -37,9 +37,9 @@ namespace PinusSylvestris.Core
             animator.ResetTrigger(FadeOutTrigger);
             yield return null;
 
-            if (Camera.main is null) yield break;
+            if (UnityEngine.Camera.main is null) yield break;
 
-            var main = Camera.main;
+            var main = UnityEngine.Camera.main;
             main.transform.parent.position = nextSphere.position;
             main.fieldOfView = 60.0f;
         }

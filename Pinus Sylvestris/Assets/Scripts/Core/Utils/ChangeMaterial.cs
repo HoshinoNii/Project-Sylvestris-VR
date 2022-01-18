@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace PinusSylvestris.Core
+namespace Sylvestris.Core.Utils
 {
     public class ChangeMaterial : MonoBehaviour
     {

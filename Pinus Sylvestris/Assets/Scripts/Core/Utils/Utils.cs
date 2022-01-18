@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace PinusSylvestris.Core
+namespace Sylvestris.Core.Utils
 {
     public static class Utils
     {

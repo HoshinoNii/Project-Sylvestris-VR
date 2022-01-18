@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
-namespace PinusSylvestris.Core
+namespace Sylvestris.Core.Camera
 {
     public class LookAtCamera : MonoBehaviour
     {
-        public Camera mainCamera;
+        public UnityEngine.Camera mainCamera;
 
         private void Update()
         {
