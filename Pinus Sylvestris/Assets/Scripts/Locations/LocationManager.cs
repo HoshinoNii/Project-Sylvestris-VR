@@ -2,7 +2,7 @@
 using Sylvestris.Core.SceneControl;
 using UnityEngine;
 
-namespace Sylvestris.Core.Locations {
+namespace Sylvestris.Locations {
 	public class LocationManager : MonoBehaviour {
 		[SerializeField] private List<Location> locations = new List<Location>();
 		public static LocationManager Instance { get; private set; }

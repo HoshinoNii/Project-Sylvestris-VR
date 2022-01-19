@@ -1,8 +1,9 @@
-﻿namespace Sylvestris.Core.Locations {
+﻿namespace Sylvestris.Locations {
 	public enum LocationType {
 		None,
 		Corridor,
 		Gowning,
-		AirShower
+		AirShower,
+		CrystalShowerFalls,
 	}
 }

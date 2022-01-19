@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Sylvestris.Core.Locations {
+namespace Sylvestris.Locations {
 	[Serializable]
 	public class Location : MonoBehaviour {
 		public LocationType type;

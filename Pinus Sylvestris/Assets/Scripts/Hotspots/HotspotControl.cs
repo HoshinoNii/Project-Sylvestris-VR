@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Sylvestris.Core.Inputs {
+namespace Sylvestris.Hotspots {
 	public class HotspotControl : MonoBehaviour {
 		private Animator Animator => GetComponent<Animator>();
 		private int FadeInTrigger => Animator.StringToHash("FadeIn");
