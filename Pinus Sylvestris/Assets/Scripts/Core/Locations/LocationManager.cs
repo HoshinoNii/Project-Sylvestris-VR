@@ -15,12 +15,12 @@ namespace Sylvestris.Core.Locations {
                 Destroy(gameObject);
         }
         
-        public static Location GetLocation(LocationType type) {
-            return Instance.locations.Find(x => x.type == type);
+        private Location GetLocation(LocationType type) {
+            return locations.Find(x => x.type == type);
         }
         
-        public static Location GetLocation(int index) {
-            return Instance.locations[index];
+        private Location GetLocation(int index) {
+            return locations[index];
         }
 
         // Use this to change location based on index
