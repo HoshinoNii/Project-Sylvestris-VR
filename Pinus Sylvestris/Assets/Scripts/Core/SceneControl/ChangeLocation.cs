@@ -19,7 +19,8 @@ namespace Sylvestris.Core.SceneControl
             else
                 Destroy(gameObject);
         }
-
+        
+        
         public static void ChangeSphere(Transform nextSphere)
         {
             // Start fading process
