@@ -1,48 +1,43 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Sylvestris.Core.SceneControl
-{
-    public class ChangeLocation : MonoBehaviour
-    {
-        public static ChangeLocation instance;
+namespace Sylvestris.Core.SceneControl {
+	public class ChangeLocation : MonoBehaviour {
+		public static ChangeLocation instance;
 
-        [SerializeField] private Animator animator;
-        private int FadeInTrigger => Animator.StringToHash("FadeIn");
-        private int FadeOutTrigger => Animator.StringToHash("FadeOut");
+		[SerializeField] private Animator animator;
+		private int FadeInTrigger => Animator.StringToHash("FadeIn");
+		private int FadeOutTrigger => Animator.StringToHash("FadeOut");
 
 
-        private void Awake()
-        {
-            if (!instance)
-                instance = this;
-            else
-                Destroy(gameObject);
-        }
-        
-        
-        public static void ChangeSphere(Transform nextSphere)
-        {
-            // Start fading process
-            instance.StartCoroutine(instance.FadeCamera(nextSphere));
-        }
+		private void Awake() {
+			if (!instance)
+				instance = this;
+			else
+				Destroy(gameObject);
+		}
 
-        private IEnumerator FadeCamera(Transform nextSphere)
-        {
-            animator.SetTrigger(FadeOutTrigger);
-            animator.ResetTrigger(FadeInTrigger);
 
-            yield return new WaitForSeconds(2.0f);
+		public static void ChangeSphere(Transform nextSphere) {
+			// Start fading process
+			instance.StartCoroutine(instance.FadeCamera(nextSphere));
+		}
 
-            animator.SetTrigger(FadeInTrigger);
-            animator.ResetTrigger(FadeOutTrigger);
-            yield return null;
+		private IEnumerator FadeCamera(Transform nextSphere) {
+			animator.SetTrigger(FadeOutTrigger);
+			animator.ResetTrigger(FadeInTrigger);
 
-            if (UnityEngine.Camera.main is null) yield break;
+			yield return new WaitForSeconds(2.0f);
 
-            var main = UnityEngine.Camera.main;
-            main.transform.parent.position = nextSphere.position;
-            main.fieldOfView = 60.0f;
-        }
-    }
+			animator.SetTrigger(FadeInTrigger);
+			animator.ResetTrigger(FadeOutTrigger);
+			yield return null;
+
+			if (UnityEngine.Camera.main is null) yield break;
+
+			UnityEngine.Camera main = UnityEngine.Camera.main;
+			main.transform.parent.position = nextSphere.position;
+			main.fieldOfView = 60.0f;
+		}
+	}
 }
