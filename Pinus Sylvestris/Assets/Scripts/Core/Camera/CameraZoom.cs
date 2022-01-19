@@ -1,27 +1,35 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Sylvestris.Core.Camera
 {
     public class CameraZoom : MonoBehaviour
     {
+        [SerializeField] private float fovMin = 10.0f;
+        [SerializeField] private float fovMax = 60.0f;
+
+        private UnityEngine.Camera Camera => UnityEngine.Camera.main;
+
+
+        private void Start()
+        {
+            if (!Camera)
+            {
+                Debug.LogError($"{nameof(Camera)} is null!!");
+            }
+        }
+
         private void Update()
         {
-            const float fovMin = 10.0f;
-            const float fovMax = 60.0f;
-
+            if(Camera == null) return;
+            
             if (Input.GetAxis("Mouse ScrollWheel") > 0) // Scroll forward
-                UnityEngine.Camera.main.fieldOfView--;
+                Camera.fieldOfView-- ;
 
             if (Input.GetAxis("Mouse ScrollWheel") < 0) // Scroll back
-                UnityEngine.Camera.main.fieldOfView++;
+                Camera.fieldOfView++;
 
-            UnityEngine.Camera.main.fieldOfView = Mathf.Clamp(UnityEngine.Camera.main.fieldOfView, fovMin, fovMax);
-
-            //if (Input.GetMouseButton(1))
-            //{
-            //	transform.Translate(Vector3.right * -Input.GetAxis("Mouse X") * panSpeed);
-            //	transform.Translate(transform.up * -Input.GetAxis("Mouse Y") * panSpeed, Space.World);
-            //}
+            Camera.fieldOfView = Mathf.Clamp(Camera.fieldOfView, fovMin, fovMax);
         }
     }
 }
