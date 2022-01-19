@@ -3,5 +3,6 @@
         None, 
         Corridor,
         Gowning,
+        AirShower,
     }
 }
