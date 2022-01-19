@@ -1233,7 +1233,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: PUT ON YOUR FUCKING HAIRNET AND MASKS
+  m_text: PUT ON YOUR HAIRNET AND MASKS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ffe8fada31ed61749b3f6ccba16e6678, type: 2}
   m_sharedMaterial: {fileID: -3570455088152942032, guid: ffe8fada31ed61749b3f6ccba16e6678,
@@ -1367,7 +1367,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: WEAR YOUR FUCKING GOWNS
+  m_text: WEAR YOUR GOWNS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ffe8fada31ed61749b3f6ccba16e6678, type: 2}
   m_sharedMaterial: {fileID: -3570455088152942032, guid: ffe8fada31ed61749b3f6ccba16e6678,
