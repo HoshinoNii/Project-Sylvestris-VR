@@ -1,8 +1,8 @@
 ﻿namespace Data {
     public enum CoffeeType {
-        Coffee,
-        CafeLatte,
-        WhiteChocolateMocha,
-        Cappuccino,
+        Coffee = 0,
+        CafeLatte = 1,
+        WhiteChocolateMocha = 2,
+        Cappuccino = 3,
     }
 }

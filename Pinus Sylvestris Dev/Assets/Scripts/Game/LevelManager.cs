@@ -10,6 +10,7 @@ namespace Game {
     
     public class LevelManager : MonoBehaviour {
         public static LevelManager Instance { get; private set; }
+        public int currentPoints;
 
         private LevelState state;
         public LevelState State {

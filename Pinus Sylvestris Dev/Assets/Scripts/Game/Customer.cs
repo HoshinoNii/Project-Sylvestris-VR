@@ -4,26 +4,40 @@ using UnityEngine;
 namespace Game {
     
     public class Customer {
-        public CoffeeType Coffee;
-        public float TimeLeft;
+        private CoffeeType _coffee;
+        private float _timeLeft;
+        private float _lowPointTime;
+        private int _pointsOnComplete;
+        private int _lowPointOnComplete;
 
-        public Customer(CoffeeType coffee, float time) {
-            this.Coffee = coffee;
-            this.TimeLeft = time;
+        public Customer(CoffeeType coffee, float time, float lowPointTime, int pointOnComplete, int LowPointOnComplete) {
+            this._coffee = coffee;
+            this._timeLeft = time;
+            this._lowPointTime = lowPointTime;
+            this._lowPointOnComplete = LowPointOnComplete;
         }
 
         public void ProcessTime(float value) {
             
-            if (TimeLeft <= 0) return;
+            if (_timeLeft <= 0) return;
             
-            TimeLeft -= value;
-            if (TimeLeft <= 0) {
+            _timeLeft -= value;
+
+            if (_timeLeft < _lowPointTime) {
+                _pointsOnComplete = _lowPointOnComplete;
+            }
+            if (_timeLeft <= 0) {
                 TimeOut();
             }
         }
 
         private void TimeOut() {
             // We can handle any TimeOutHere
+            CustomerManager.Instance.RemoveCustomer(this);
+        }
+
+        private void Complete() {
+            CustomerManager.Instance.AddPoints(_pointsOnComplete);
         }
     }
 }
