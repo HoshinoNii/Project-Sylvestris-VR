@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace TemplateScripts {
+namespace Inputs {
     public class InputControl : MonoBehaviour {
         private void Update() {
             if (Input.GetButtonDown("Fire1")) {

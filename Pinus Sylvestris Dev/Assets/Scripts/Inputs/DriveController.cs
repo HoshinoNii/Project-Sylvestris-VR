@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace TemplateScripts {
+namespace Inputs {
     public class DriveController : MonoBehaviour {
         public float IsDeadZone;
         private Vector2 inputForce;
