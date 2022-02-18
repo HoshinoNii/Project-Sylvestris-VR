@@ -34,10 +34,9 @@ namespace Game {
         }
 
         private void Update() {
-            if (_currentTime <= 0) {
-                CreateCustomer(coffeeTypes[Random.Range(0, coffeeTypes.Length)]);
-                _currentTime = timeBeforeNewCustomer;
-            }
+            if (!(_currentTime <= 0)) return;
+            CreateCustomer(coffeeTypes[Random.Range(0, coffeeTypes.Length)]);
+            _currentTime = timeBeforeNewCustomer;
         }
 
         public void AddPoints(int i) {
