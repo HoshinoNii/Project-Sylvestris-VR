@@ -221,6 +221,7 @@ GameObject:
   - component: {fileID: 5220262808603154731}
   - component: {fileID: 5220262808603154730}
   - component: {fileID: 1718310238}
+  - component: {fileID: 3516209650422881260}
   m_Layer: 0
   m_Name: Coffee Beans
   m_TagString: Untagged
@@ -334,6 +335,25 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!95 &3516209650422881260
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5220262808603154726}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1d569c8056276cd44aa020fe2f053e13, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6795701158080842479
 GameObject:
   m_ObjectHideFlags: 0

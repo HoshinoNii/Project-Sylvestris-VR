@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 
 namespace Inventory {
-    public class CollectItem : MonoBehaviour, IPointerUpHandler{
+    public class CollectItem : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler {
         //public Color mouseOverColor = Color.blue;
         //private Color originalColor;
         //public GameObject Outline;
@@ -58,6 +58,14 @@ namespace Inventory {
             gameObject.SetActive(false);
             // Hide it to prevent issues
             transform.position = new Vector3(9000, 9000, 9000);
+        }
+
+        public void OnPointerEnter(PointerEventData eventData) {
+            GetComponent<Animator>()?.SetBool("Hovering", true);
+        }
+
+        public void OnPointerExit(PointerEventData eventData) {
+            GetComponent<Animator>()?.SetBool("Hovering", false);
         }
     }
 }
