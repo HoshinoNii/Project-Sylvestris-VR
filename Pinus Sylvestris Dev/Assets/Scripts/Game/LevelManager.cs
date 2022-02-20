@@ -6,17 +6,17 @@ namespace Game {
         public static LevelManager Instance { get; private set; }
         public int currentPoints;
 
-        private LevelState state;
+        private LevelState _state;
         public LevelState State {
-            get => state;
+            get => _state;
             set {
-                state = value;
+                _state = value;
                 UpdateState();
             }
         }
 
         private void UpdateState() {
-            switch (state) {
+            switch (_state) {
                 case LevelState.PreGame:
                     break;
                 case LevelState.Game:

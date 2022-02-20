@@ -5,6 +5,7 @@ namespace Inventory {
     public class UseItemOnThis : MonoBehaviour {
         
         public ItemType itemType;
+        public bool anyTypeCanGoIn;
 
         private void Start() { }
 
@@ -21,6 +22,12 @@ namespace Inventory {
 
         private void OnMouseDown() {
             if (Inventory.Instance.SelectedItem) {
+                
+                if (anyTypeCanGoIn) {
+                    FirstUnlockInstance();
+                    return;
+                }
+                
                 if (Inventory.Instance.SelectedItem.itemType == itemType &&
                     GetComponent<Used>() == null) //!Inventory.Instance.SelectedItem.Unlocked)
                 {

@@ -52,11 +52,16 @@ namespace Inventory {
             if (SelectedItem) SelectedItem.UI_Item.SetActive(true);
 
             SelectedItem = item;
-            CursorImage.sprite = SelectedCoffeeThumbnails[(int) item.itemType];
+            // CursorImage.sprite = SelectedCoffeeThumbnails[(int) item.itemType];
             CursorImage.gameObject.SetActive(true);
             item.UI_Item.SetActive(false);
         }
 
+        public void UseItem(Item item, CoffeeType coffeeItem) {
+            UseItem(item);
+            CursorImage.sprite = SelectedCoffeeThumbnails[(int) coffeeItem];
+        }
+        
         public void UseItem(Item item, IngredientType ingredientType) {
             UseItem(item);
             CursorImage.sprite = SelectedIngredientThumbnails[(int) ingredientType];
@@ -66,10 +71,12 @@ namespace Inventory {
             CursorImage.gameObject.SetActive(false);
 
             SelectedItem.numberOfUse--;
-            if (SelectedItem.numberOfUse <= 0)
+            if (SelectedItem.numberOfUse <= 0) {
+                // Remove the selected item once used finish.
+                itemList.Remove(SelectedItem);
                 Destroy(SelectedItem.UI_Item);
-            else
-                SelectedItem.UI_Item.SetActive(true);
+            }
+            else SelectedItem.UI_Item.SetActive(true);
 
             SelectedItem = null;
         }
@@ -89,8 +96,8 @@ namespace Inventory {
             UseItem useItem = AddItem(item);
 
             if (useItem == null) return;
-            
-            useItem.isIngredient = true;
+
+            useItem.isIngredient = false;
             useItem.coffeeType = coffeeItem.coffeeType;
             useItem.GetComponentsInChildren<Image>()[0].sprite = CoffeeThumbnails[(int) coffeeItem.coffeeType];
         }

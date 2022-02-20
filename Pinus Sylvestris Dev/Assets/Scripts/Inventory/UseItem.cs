@@ -16,7 +16,7 @@ namespace Inventory {
             if (isIngredient) {
                 Inventory.Instance.UseItem(item, ingredientType);
             } else {
-                Inventory.Instance.UseItem(item);
+                Inventory.Instance.UseItem(item, coffeeType);
             }
         }
     }

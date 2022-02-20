@@ -8,5 +8,7 @@
 		SfxPickup,
 		SfxInteractWithBarista,
 		SfxChangeLocation,
+		SfxInteractWithTrashCan,
+		SfxInteractWithServingTray,
 	}
 }

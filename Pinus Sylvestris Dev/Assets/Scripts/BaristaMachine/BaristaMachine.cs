@@ -26,19 +26,20 @@ namespace BaristaMachine {
             Instance = this;
         }
 
-        public static CoffeeType GetRecipe(List<IngredientType> ingredientTypes) {
+        private CoffeeType GetRecipe(List<IngredientType> ingredientTypes) {
             foreach (Recipe recipe in Instance.recipes) {
                 bool sequenceEqual = recipe.ingredients.SequenceEqual(ingredientTypes);
+                Debug.Log($"Sequence Equal: {sequenceEqual}");
                 if (sequenceEqual) {
+                    Debug.Log(recipe.coffeeType.ToString());
                     return recipe.coffeeType;
                 }
             }
-
             return CoffeeType.Coffee; // Return Questionable coffee
         }
 
-        private static void PrepareCoffee() {
-            Instance.CreateCoffee(GetRecipe(Instance.currentIngredients));
+        private void PrepareCoffee() {
+            Instance.CreateCoffee(GetRecipe(currentIngredients));
         }
 
         private void CreateCoffee(CoffeeType coffeeType) {

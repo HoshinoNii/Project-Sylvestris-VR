@@ -3,30 +3,31 @@ using UnityEngine;
 
 namespace Game {
     
+    [System.Serializable]
     public class Customer {
-        private CoffeeType _coffee;
-        private float _timeLeft;
-        private float _lowPointTime;
-        private int _pointsOnComplete;
-        private int _lowPointOnComplete;
+        [SerializeField] public CoffeeType coffee;
+        [SerializeField] public float timeLeft;
+        [SerializeField] private float _lowPointTime;
+        [SerializeField] private int _pointsOnComplete;
+        [SerializeField] private int _lowPointOnComplete;
 
         public Customer(CoffeeType coffee, float time, float lowPointTime, int pointOnComplete, int LowPointOnComplete) {
-            this._coffee = coffee;
-            this._timeLeft = time;
+            this.coffee = coffee;
+            this.timeLeft = time;
             this._lowPointTime = lowPointTime;
             this._lowPointOnComplete = LowPointOnComplete;
         }
 
         public void ProcessTime(float value) {
             
-            if (_timeLeft <= 0) return;
+            if (timeLeft <= 0) return;
             
-            _timeLeft -= value;
+            timeLeft -= value;
 
-            if (_timeLeft < _lowPointTime) {
+            if (timeLeft < _lowPointTime) {
                 _pointsOnComplete = _lowPointOnComplete;
             }
-            if (_timeLeft <= 0) {
+            if (timeLeft <= 0) {
                 TimeOut();
             }
         }
@@ -36,8 +37,9 @@ namespace Game {
             CustomerManager.Instance.RemoveCustomer(this);
         }
 
-        private void Complete() {
+        public void Complete() {
             CustomerManager.Instance.AddPoints(_pointsOnComplete);
+            CustomerManager.Instance.RemoveCustomer(this);
         }
     }
 }

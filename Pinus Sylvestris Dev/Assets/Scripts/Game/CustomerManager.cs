@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Data;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -19,7 +20,7 @@ namespace Game {
         public int maxCustomers;
         
         
-        private List<Customer> _currentCustomers = new List<Customer>();
+        [SerializeField] private List<Customer> currentCustomers = new List<Customer>();
 
         private void Awake() {
             Instance = this;
@@ -27,16 +28,25 @@ namespace Game {
 
         private void CreateCustomer(CoffeeType coffee) {
             //We dont need to have more than 5 Customers
-            if (_currentCustomers.Count > maxCustomers) return; 
+            if (currentCustomers.Count >= maxCustomers) return; 
             Customer customer = new Customer(coffee, timeOutDuration, lowScoreDuration, pointsOnComplete,
                 lowPointsOnComplete);
-            _currentCustomers.Add(customer);
+            currentCustomers.Add(customer);
         }
 
         private void Update() {
-            if (!(_currentTime <= 0)) return;
-            CreateCustomer(coffeeTypes[Random.Range(0, coffeeTypes.Length)]);
-            _currentTime = timeBeforeNewCustomer;
+            foreach (Customer customer in currentCustomers) {
+                customer.ProcessTime(Time.deltaTime);
+            }
+            // if (LevelManager.Instance.State == LevelState.PreGame) return;
+            if (_currentTime <= 0) {
+                CreateCustomer(coffeeTypes[Random.Range(0, coffeeTypes.Length)]);
+                _currentTime = timeBeforeNewCustomer;
+            } else {
+                _currentTime -= Time.deltaTime;
+            }
+            
+            
         }
 
         public void AddPoints(int i) {
@@ -44,8 +54,14 @@ namespace Game {
         }
 
         public void RemoveCustomer(Customer customer) {
-            if (!_currentCustomers.Contains(customer)) return;
-            _currentCustomers.Remove(customer);
+            if (!currentCustomers.Contains(customer)) return;
+            currentCustomers.Remove(customer);
         }
+
+        public void ServeCustomer(CoffeeType coffeeType) {
+            List<Customer> customers = currentCustomers.FindAll(x => x.coffee == coffeeType);
+            List<Customer> orderedCustomers = customers.OrderBy(x => x.timeLeft).ToList();
+            orderedCustomers[0].Complete();
+        } 
     }
 }

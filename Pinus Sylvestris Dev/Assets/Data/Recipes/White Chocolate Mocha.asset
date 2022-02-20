@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc5e7fa34577e544aa0514d42c25b4d7, type: 3}
   m_Name: White Chocolate Mocha
   m_EditorClassIdentifier: 
-  coffeeType: 1
+  coffeeType: 2
   ingredients: 01000000040000000300000002000000
