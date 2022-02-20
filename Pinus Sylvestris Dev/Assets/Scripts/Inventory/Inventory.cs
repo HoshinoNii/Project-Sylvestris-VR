@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Data;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,15 +10,20 @@ namespace Inventory {
         }
 
         private static Inventory _instance;
-        private List<Item> itemList;
+
+        [SerializeField] private int inventoryLimit;
+        [SerializeField] private List<Item> itemList;
         public GameObject itemPic;
         public Transform InventoryPanel;
 
-        public Sprite[] Thumbnails;
-        public Sprite[] SelectedThumbnails;
+        public Sprite[] CoffeeThumbnails;
+        public Sprite[] SelectedCoffeeThumbnails;
+
+        public Sprite[] IngredentThumbmails;
+        public Sprite[] SelectedIngredientThumbnails;
 
         public Image CursorImage;
-        [HideInInspector] public Item SelectedItem;
+        public Item SelectedItem;
 
         private void Awake() {
             if (_instance != null && _instance != this) {
@@ -46,9 +52,14 @@ namespace Inventory {
             if (SelectedItem) SelectedItem.UI_Item.SetActive(true);
 
             SelectedItem = item;
-            CursorImage.sprite = SelectedThumbnails[(int) item.itemType];
+            CursorImage.sprite = SelectedCoffeeThumbnails[(int) item.itemType];
             CursorImage.gameObject.SetActive(true);
             item.UI_Item.SetActive(false);
+        }
+
+        public void UseItem(Item item, IngredientType ingredientType) {
+            UseItem(item);
+            CursorImage.sprite = SelectedIngredientThumbnails[(int) ingredientType];
         }
 
         public void UsedItem() {
@@ -63,12 +74,35 @@ namespace Inventory {
             SelectedItem = null;
         }
 
-        public void AddItem(Item item) {
+        public UseItem AddItem(Item item) {
+            
+            if (itemList.Count > inventoryLimit) return null;
             GameObject newitem = Instantiate(itemPic, InventoryPanel);
-            newitem.GetComponent<UseItem>().item = item;
-            newitem.GetComponentsInChildren<Image>()[0].sprite = Thumbnails[(int) item.itemType];
+            UseItem useItem = newitem.GetComponent<UseItem>();
+            useItem.item = item;;
             item.UI_Item = newitem;
             itemList.Add(item);
+            return useItem;
+        }
+
+        public void AddItem(Item item, CoffeeItem coffeeItem) {
+            UseItem useItem = AddItem(item);
+
+            if (useItem == null) return;
+            
+            useItem.isIngredient = true;
+            useItem.coffeeType = coffeeItem.coffeeType;
+            useItem.GetComponentsInChildren<Image>()[0].sprite = CoffeeThumbnails[(int) coffeeItem.coffeeType];
+        }
+        
+        public void AddItem(Item item, Ingredient ingredient) {
+            UseItem useItem = AddItem(item);
+
+            if (useItem == null) return;
+            
+            useItem.isIngredient = true;
+            useItem.ingredientType = ingredient.ingredientType;
+            useItem.GetComponentsInChildren<Image>()[0].sprite = IngredentThumbmails[(int) ingredient.ingredientType];
         }
     }
 }

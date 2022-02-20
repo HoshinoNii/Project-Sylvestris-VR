@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Data;
+using Inventory;
 using UnityEngine;
 
 namespace BaristaMachine {
@@ -25,6 +26,7 @@ namespace BaristaMachine {
 
         public void Config(CoffeeType coffeeType) {
             CoffeeStruct coffeeData = GetCoffeePrefab(coffeeType);
+            GetComponent<CoffeeItem>().coffeeType = coffeeType;
             type = coffeeData.coffeeType;
             coffeeData.coffeeGameObject.SetActive(true);
         }

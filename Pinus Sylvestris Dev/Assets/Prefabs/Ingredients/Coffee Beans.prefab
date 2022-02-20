@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5220262808603154728}
   - component: {fileID: 5220262808603154731}
   - component: {fileID: 5220262808603154730}
+  - component: {fileID: 1718310238}
   m_Layer: 0
   m_Name: Coffee Beans
   m_TagString: Untagged
@@ -49,7 +50,7 @@ MonoBehaviour:
   numberOfUse: 1
   itemType: 1
   UI_Item: {fileID: 0}
-  ingredientType: 0
+  ingredientType: 1
 --- !u!114 &5220262808603154731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,6 +80,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.02, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1718310238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5220262808603154726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
 --- !u!1001 &5220262807542792542
 PrefabInstance:
   m_ObjectHideFlags: 0

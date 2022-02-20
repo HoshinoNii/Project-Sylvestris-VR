@@ -1,8 +1,9 @@
 ﻿namespace Data {
     public enum IngredientType {
-        CoffeeBean = 0,
-        Water = 1,
-        Milk = 2,
-        Chocolate = 3,
+        None = 0,
+        CoffeeBean = 1,
+        Water = 2,
+        Milk = 3,
+        Chocolate = 4,
     }
 }

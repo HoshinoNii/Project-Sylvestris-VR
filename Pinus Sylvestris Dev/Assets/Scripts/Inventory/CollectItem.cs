@@ -12,6 +12,8 @@ namespace Inventory {
         public float pickupCooldown;
         private float _currentCooldown;
         public bool canTake;
+        public bool isIngredient;
+        public bool hideOnCollect;
 
         public AudioSource audio;
         public AudioClip clip;
@@ -40,9 +42,22 @@ namespace Inventory {
 
         private void OnMouseDown() {
             if (!canTake) return;
+            canTake = false;
             _currentCooldown = pickupCooldown;
-            Inventory.Instance.AddItem(GetComponent<Item>());
+            if (isIngredient) {
+                Ingredient ingredient = GetComponent<Ingredient>();
+                Inventory.Instance.AddItem(GetComponent<Item>(), ingredient);
+            } else {
+                CoffeeItem coffee = GetComponent<CoffeeItem>();
+                Inventory.Instance.AddItem(GetComponent<Item>(), coffee);
+            }
             SfxManager.Play(AudioType.SfxPickup);
+
+            if (!hideOnCollect) return;
+            
+            gameObject.SetActive(false);
+            // Hide it to prevent issues
+            transform.position = new Vector3(9000, 9000, 9000);
         }
     }
 }

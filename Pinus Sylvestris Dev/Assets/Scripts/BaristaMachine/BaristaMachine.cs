@@ -15,6 +15,11 @@ namespace BaristaMachine {
         [SerializeField] private GameObject coffeePrefab;
         [SerializeField] private List<Recipe> recipes = new List<Recipe>();
         [SerializeField] private List<IngredientType> currentIngredients = new List<IngredientType>();
+        public List<string> Ingredients {
+            get {
+                return currentIngredients.Select(currentIngredient => currentIngredient.ToString()).ToList();
+            }
+        }
 
 
         private void Awake() {
@@ -37,7 +42,7 @@ namespace BaristaMachine {
         }
 
         private void CreateCoffee(CoffeeType coffeeType) {
-            GameObject coffee = Instantiate(coffeePrefab, coffeeSpawnPoint);
+            GameObject coffee = Instantiate(coffeePrefab, coffeeSpawnPoint.position, Quaternion.identity);
             Coffee coffeeRef = coffee.GetComponent<Coffee>();
             coffeeRef.Config(coffeeType);
             currentIngredients.Clear();
@@ -47,7 +52,9 @@ namespace BaristaMachine {
             AddIngredient();
         }
 
-        public override void SubsequentActivation_IfAny() { }
+        public override void SubsequentActivation_IfAny() {
+            AddIngredient();
+        }
 
         private void AddIngredient() {
             if (currentIngredients.Count > 4) return;
