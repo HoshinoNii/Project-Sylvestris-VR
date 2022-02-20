@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Data;
+using UI;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -20,7 +21,7 @@ namespace Game {
         public int maxCustomers;
         
         
-        [SerializeField] private List<Customer> currentCustomers = new List<Customer>();
+        [SerializeField] public List<Customer> currentCustomers = new List<Customer>();
 
         private void Awake() {
             Instance = this;
@@ -30,15 +31,17 @@ namespace Game {
             //We dont need to have more than 5 Customers
             if (currentCustomers.Count >= maxCustomers) return; 
             Customer customer = new Customer(coffee, timeOutDuration, lowScoreDuration, pointsOnComplete,
-                lowPointsOnComplete);
+                lowPointsOnComplete, RandomNames.PickRandomName(), CoffeeThumbmailSprites.Instance.images[(int)coffee]);
             currentCustomers.Add(customer);
+            CustomersUI.Instance.UpdateCustomerElements();
         }
 
         private void Update() {
+            if (LevelManager.Instance.State == LevelState.PreGame) return;
+            
             foreach (Customer customer in currentCustomers) {
                 customer.ProcessTime(Time.deltaTime);
             }
-            // if (LevelManager.Instance.State == LevelState.PreGame) return;
             if (_currentTime <= 0) {
                 CreateCustomer(coffeeTypes[Random.Range(0, coffeeTypes.Length)]);
                 _currentTime = timeBeforeNewCustomer;
@@ -56,6 +59,7 @@ namespace Game {
         public void RemoveCustomer(Customer customer) {
             if (!currentCustomers.Contains(customer)) return;
             currentCustomers.Remove(customer);
+            CustomersUI.Instance.UpdateCustomerElements();
         }
 
         public void ServeCustomer(CoffeeType coffeeType) {
