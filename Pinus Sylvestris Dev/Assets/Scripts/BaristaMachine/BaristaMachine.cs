@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Core.Audio;
 using Data;
+using Inventory;
 using UnityEngine;
+using AudioType = Core.Audio.Enums.AudioType;
 
 namespace BaristaMachine {
-    public class BaristaMachine : MonoBehaviour {
+    public class BaristaMachine : UseItemOnThis {
         public static BaristaMachine Instance { get; private set; }
 
         [SerializeField] private Transform coffeeSpawnPoint;
@@ -29,7 +32,7 @@ namespace BaristaMachine {
             return CoffeeType.Coffee; // Return Questionable coffee
         }
 
-        public static void PrepareCoffee() {
+        private static void PrepareCoffee() {
             Instance.CreateCoffee(GetRecipe(Instance.currentIngredients));
         }
 
@@ -37,6 +40,26 @@ namespace BaristaMachine {
             GameObject coffee = Instantiate(coffeePrefab, coffeeSpawnPoint);
             Coffee coffeeRef = coffee.GetComponent<Coffee>();
             coffeeRef.Config(coffeeType);
+            currentIngredients.Clear();
+        }
+
+        public override void FirstUnlockInstance() {
+            AddIngredient();
+        }
+
+        public override void SubsequentActivation_IfAny() { }
+
+        private void AddIngredient() {
+            if (currentIngredients.Count > 4) return;
+            SfxManager.Play(AudioType.SfxInteractWithBarista);
+            Ingredient item = Inventory.Inventory.Instance.SelectedItem.GetComponent<Ingredient>();
+            if (!item) return;
+            currentIngredients.Add(item.ingredientType);
+            SetItemAsUsed();
+
+            if (currentIngredients.Count >= 4) {
+                PrepareCoffee();
+            }
         }
     }
 }

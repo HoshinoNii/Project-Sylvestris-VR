@@ -14,19 +14,19 @@ namespace BaristaMachine {
         }
 
         private CoffeeStruct GetCoffeePrefab(CoffeeType coffeeType) {
-            return coffeeModels.Find(x => x.CoffeeType == coffeeType);
+            return coffeeModels.Find(x => x.coffeeType == coffeeType);
         }
 
         private void DisableAllCoffeePrefabs() {
             foreach (CoffeeStruct coffee in coffeeModels) {
-                coffee.CoffeeGameObject.SetActive(false);
+                coffee.coffeeGameObject.SetActive(false);
             }
         }
 
         public void Config(CoffeeType coffeeType) {
             CoffeeStruct coffeeData = GetCoffeePrefab(coffeeType);
-            type = coffeeData.CoffeeType;
-            coffeeData.CoffeeGameObject.SetActive(true);
+            type = coffeeData.coffeeType;
+            coffeeData.coffeeGameObject.SetActive(true);
         }
     }
 }

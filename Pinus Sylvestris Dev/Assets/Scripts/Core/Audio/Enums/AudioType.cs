@@ -7,5 +7,6 @@
 		SfxUIButtonClick,
 		SfxPickup,
 		SfxInteractWithBarista,
+		SfxChangeLocation,
 	}
 }

@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using Core.Audio;
 using UnityEngine;
+using AudioType = Core.Audio.Enums.AudioType;
 
 namespace Location {
     public class LocationManager : MonoBehaviour
@@ -32,6 +34,7 @@ namespace Location {
         // Use this to change location based on index
         public void GotoLocation(int index)
         {
+            SfxManager.Play(AudioType.SfxChangeLocation);
             ChangeLocation.ChangeSphere(GetLocation(index).Position);
         }
         

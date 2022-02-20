@@ -1,10 +1,17 @@
-﻿using UnityEngine;
+﻿using System;
+using Core.Audio;
+using UnityEngine;
+using AudioType = Core.Audio.Enums.AudioType;
 
 namespace Inventory {
     public class CollectItem : MonoBehaviour {
         //public Color mouseOverColor = Color.blue;
         //private Color originalColor;
         //public GameObject Outline;
+
+        public float pickupCooldown;
+        private float _currentCooldown;
+        public bool canTake;
 
         public AudioSource audio;
         public AudioClip clip;
@@ -24,10 +31,18 @@ namespace Inventory {
             //else r.material.color = originalColor;
         }
 
+        private void Update() {
+            if (_currentCooldown <= 0)
+                canTake = true;
+            else
+                _currentCooldown -= Time.deltaTime;
+        }
+
         private void OnMouseDown() {
+            if (!canTake) return;
+            _currentCooldown = pickupCooldown;
             Inventory.Instance.AddItem(GetComponent<Item>());
-            if (audio) audio.PlayOneShot(clip);
-            this.gameObject.SetActive(false);
+            SfxManager.Play(AudioType.SfxPickup);
         }
     }
 }

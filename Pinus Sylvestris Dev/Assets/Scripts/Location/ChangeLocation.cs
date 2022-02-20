@@ -35,9 +35,9 @@ namespace Location {
             animator.ResetTrigger(FadeOutTrigger);
             yield return null;
 
-            if (UnityEngine.Camera.main is null) yield break;
+            if (Camera.main is null) yield break;
 
-            var main = UnityEngine.Camera.main;
+            Camera main = UnityEngine.Camera.main;
             main.transform.parent.position = nextSphere.position;
             main.fieldOfView = 60.0f;
         }

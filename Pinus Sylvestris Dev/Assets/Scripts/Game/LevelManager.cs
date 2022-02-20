@@ -2,12 +2,6 @@
 using UnityEngine;
 
 namespace Game {
-    public enum LevelState {
-        PreGame,
-        Game,
-        GameOver,
-    }
-    
     public class LevelManager : MonoBehaviour {
         public static LevelManager Instance { get; private set; }
         public int currentPoints;

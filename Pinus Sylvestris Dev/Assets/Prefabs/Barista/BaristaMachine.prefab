@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4335634081556025566
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5712868207499936042}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5712868207499936042
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4335634081556025566}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.13, y: 0, z: 0.107}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5090413223289133426}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5090413223289133428
 GameObject:
   m_ObjectHideFlags: 0
@@ -27,7 +57,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 8611832539480416081}
+  - {fileID: 5712868207499936042}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -43,10 +75,87 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65a53011f34280d4f9d14e45d27c85b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coffeeSpawnPoint: {fileID: 0}
-  coffeePrefab: {fileID: 0}
+  itemType: 1
+  coffeeSpawnPoint: {fileID: 5712868207499936042}
+  coffeePrefab: {fileID: 8590830725275227981, guid: faacef84568b1c4468305f1f769aefe7,
+    type: 3}
   recipes:
   - {fileID: 11400000, guid: 8250a6ce57dd3fb4abb17c4d7b0ddab0, type: 2}
   - {fileID: 11400000, guid: 39ce9ae01bdff434c9e2db6a8e2a961c, type: 2}
   - {fileID: 11400000, guid: a379b9d22f3db514fa5fc50774e8e5b0, type: 2}
   currentIngredients: 
+--- !u!1001 &8073222866165577914
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5090413223289133426}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 03f92f4bf2d7e36459affe1a5113ba5d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 03f92f4bf2d7e36459affe1a5113ba5d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 03f92f4bf2d7e36459affe1a5113ba5d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 03f92f4bf2d7e36459affe1a5113ba5d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 03f92f4bf2d7e36459affe1a5113ba5d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 03f92f4bf2d7e36459affe1a5113ba5d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 03f92f4bf2d7e36459affe1a5113ba5d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 03f92f4bf2d7e36459affe1a5113ba5d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 03f92f4bf2d7e36459affe1a5113ba5d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 03f92f4bf2d7e36459affe1a5113ba5d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 03f92f4bf2d7e36459affe1a5113ba5d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 03f92f4bf2d7e36459affe1a5113ba5d,
+        type: 3}
+      propertyPath: m_Name
+      value: coffee_maker
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 03f92f4bf2d7e36459affe1a5113ba5d, type: 3}
+--- !u!4 &8611832539480416081 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 03f92f4bf2d7e36459affe1a5113ba5d,
+    type: 3}
+  m_PrefabInstance: {fileID: 8073222866165577914}
+  m_PrefabAsset: {fileID: 0}

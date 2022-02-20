@@ -3,7 +3,8 @@ using UnityEngine;
 
 namespace Inventory {
     public class UseItemOnThis : MonoBehaviour {
-        public IngredientType itemType;
+        
+        public ItemType itemType;
 
         private void Start() { }
 

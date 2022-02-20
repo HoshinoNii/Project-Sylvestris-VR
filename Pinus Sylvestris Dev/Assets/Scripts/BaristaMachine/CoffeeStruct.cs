@@ -2,8 +2,9 @@
 using UnityEngine;
 
 namespace BaristaMachine {
+    [System.Serializable]
     public struct CoffeeStruct {
-        public CoffeeType CoffeeType;
-        public GameObject CoffeeGameObject;
+        public CoffeeType coffeeType;
+        public GameObject coffeeGameObject;
     }
 }

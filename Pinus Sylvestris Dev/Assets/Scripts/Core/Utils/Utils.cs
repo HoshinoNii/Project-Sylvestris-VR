@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Core.Utils {
@@ -13,21 +12,6 @@ namespace Core.Utils {
                     material.color.a - Time.deltaTime / time);
                 yield return null;
             }
-        }
-    }
-    
-    public class ChangeMaterial : MonoBehaviour
-    {
-        public List<Material> materials = new List<Material>();
-
-        public void NextMaterial()
-        {
-            GetComponent<MeshRenderer>().material = materials[1];
-        }
-
-        public void PreviousMaterial()
-        {
-            GetComponent<MeshRenderer>().material = materials[0];
         }
     }
 }
