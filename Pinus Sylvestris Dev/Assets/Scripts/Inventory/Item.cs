@@ -5,6 +5,6 @@ namespace Inventory {
         public int numberOfUse = 1;
         public ItemType itemType;
         
-        [HideInInspector] public GameObject UI_Item;
+        public GameObject UI_Item;
     }
 }

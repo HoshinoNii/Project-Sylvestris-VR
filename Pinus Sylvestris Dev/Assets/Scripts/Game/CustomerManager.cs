@@ -53,8 +53,7 @@ namespace Game {
         }
 
         public void AddPoints(int i) {
-            
-            LevelManager.Instance.currentPoints = i;
+            LevelManager.Instance.currentPoints += i;
         }
 
         public void RemoveCustomer(Customer customer) {

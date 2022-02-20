@@ -239,7 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40fe002ca6535cd48890c94eb410a49b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupCooldown: 1.5
+  pickupCooldown: 0.5
   canTake: 1
   isIngredient: 0
   hideOnCollect: 0

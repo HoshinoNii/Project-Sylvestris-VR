@@ -4,6 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace Inventory {
+
+    [System.Serializable]
+    public struct InventoryItem {
+        public Item itemReference;
+        public GameObject UIitem;
+
+        public InventoryItem(Item item, GameObject UI) {
+            itemReference = item;
+            UIitem = UI;
+        }
+    }
+    
     public class Inventory : MonoBehaviour {
         public static Inventory Instance {
             get { return _instance; }
@@ -13,6 +25,7 @@ namespace Inventory {
 
         [SerializeField] private int inventoryLimit;
         [SerializeField] private List<Item> itemList;
+        [SerializeField] private List<InventoryItem> inventoryItems = new List<InventoryItem>();
         public GameObject itemPic;
         public Transform InventoryPanel;
 
@@ -75,6 +88,7 @@ namespace Inventory {
                 // Remove the selected item once used finish.
                 itemList.Remove(SelectedItem);
                 Destroy(SelectedItem.UI_Item);
+                
             }
             else SelectedItem.UI_Item.SetActive(true);
 
@@ -84,11 +98,17 @@ namespace Inventory {
         public UseItem AddItem(Item item) {
             
             if (itemList.Count > inventoryLimit) return null;
+            if (item.UI_Item) return null;
+            
             GameObject newitem = Instantiate(itemPic, InventoryPanel);
             UseItem useItem = newitem.GetComponent<UseItem>();
-            useItem.item = item;;
+            useItem.item = item;
             item.UI_Item = newitem;
+            
+            InventoryItem inventoryItem = new InventoryItem(item, newitem);
+            inventoryItems.Add(inventoryItem);
             itemList.Add(item);
+            
             return useItem;
         }
 
