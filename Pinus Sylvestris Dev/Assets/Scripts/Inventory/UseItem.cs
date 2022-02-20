@@ -7,7 +7,7 @@ namespace Inventory {
         public bool isIngredient;
         public IngredientType ingredientType;
         public CoffeeType coffeeType;
-        [HideInInspector] public Item item;
+        public Item item;
 
         // Start is called before the first frame update
         private void Start() { }

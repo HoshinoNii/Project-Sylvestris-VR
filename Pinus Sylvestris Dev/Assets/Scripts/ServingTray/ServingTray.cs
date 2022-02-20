@@ -16,7 +16,9 @@ namespace ServingTray {
 
         private void ServeCustomer() {
             CoffeeItem item = Inventory.Inventory.Instance.SelectedItem.GetComponent<CoffeeItem>();
+            Debug.Log($"Not Served!");
             if (!item) return;
+            Debug.Log($"Served!");
             SfxManager.Play(AudioType.SfxInteractWithServingTray);
             CustomerManager.Instance.ServeCustomer(item.coffeeType);
             SetItemAsUsed();

@@ -10,5 +10,6 @@
 		SfxChangeLocation,
 		SfxInteractWithTrashCan,
 		SfxInteractWithServingTray,
+		BgmPostGame,
 	}
 }

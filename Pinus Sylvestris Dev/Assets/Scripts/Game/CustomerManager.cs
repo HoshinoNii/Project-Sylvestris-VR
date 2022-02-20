@@ -53,6 +53,7 @@ namespace Game {
         }
 
         public void AddPoints(int i) {
+            
             LevelManager.Instance.currentPoints = i;
         }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Data {
     public class RandomNames {
-        public static string[] randomNames = new string[] {
+        private static string[] randomNames = new string[] {
             "Michael Holmes",
             "Laughlin Ross",
             "Michael Harper",
@@ -15,6 +15,8 @@ namespace Data {
             "Sarah Hunter",
             "Barbara Shaw",
             "Elisabeth Reid",
+            "Terry",
+            "Hamzehhhh",
         };
 
         public static string PickRandomName() {

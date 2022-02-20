@@ -60,6 +60,8 @@ namespace BaristaMachine {
         private void AddIngredient() {
             if (currentIngredients.Count > 4) return;
             SfxManager.Play(AudioType.SfxInteractWithBarista);
+            if (Inventory.Inventory.Instance.SelectedItem == null) return;
+            
             Ingredient item = Inventory.Inventory.Instance.SelectedItem.GetComponent<Ingredient>();
             if (!item) return;
             currentIngredients.Add(item.ingredientType);

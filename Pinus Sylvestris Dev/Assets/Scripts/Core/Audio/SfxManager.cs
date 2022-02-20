@@ -7,7 +7,7 @@ using AudioType = Core.Audio.Enums.AudioType;
 namespace Core.Audio {
 	public class SfxManager : MonoBehaviour {
 		[SerializeField] private List<SoundEffect> soundEffects = new List<SoundEffect>();
-		public static SfxManager Instance { get; private set; }
+		private static SfxManager Instance { get; set; }
 
 		private void Awake() {
 			Configure();

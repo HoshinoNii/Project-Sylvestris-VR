@@ -16,6 +16,7 @@ namespace Game {
         public Customer(CoffeeType coffee, float time, float lowPointTime, int pointOnComplete, int lowPointOnComplete, string name, Sprite coffeeImage) {
             this.coffee = coffee;
             this.timeLeft = time;
+            this._pointsOnComplete = pointOnComplete;
             this._lowPointTime = lowPointTime;
             this._lowPointOnComplete = lowPointOnComplete;
             this.name = name;
@@ -42,6 +43,7 @@ namespace Game {
         }
 
         public void Complete() {
+            Debug.Log($"Added Points {_pointsOnComplete}");
             CustomerManager.Instance.AddPoints(_pointsOnComplete);
             CustomerManager.Instance.RemoveCustomer(this);
         }

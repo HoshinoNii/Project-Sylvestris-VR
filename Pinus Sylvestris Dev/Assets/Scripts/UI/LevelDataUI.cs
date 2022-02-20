@@ -1,4 +1,5 @@
 ﻿using System;
+using Core.Utils;
 using Game;
 using TMPro;
 using UnityEngine;
@@ -9,7 +10,7 @@ namespace UI {
         public TextMeshProUGUI score;
 
         private void Update() {
-            gameTime.text = $"TIME LEFT: {LevelManager.Instance.timeLeft}";
+            gameTime.text = $"TIME LEFT: {Utils.ConvertFloatToTime(LevelManager.Instance.timeLeft)}";
             score.text = $"CURRENT SCORE: {LevelManager.Instance.currentPoints}";
         }
     }
