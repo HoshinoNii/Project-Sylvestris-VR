@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using Core.Audio;
 using Data;
 using UnityEngine;
 using UnityEngine.UI;
+using AudioType = Core.Audio.Enums.AudioType;
 
 namespace Inventory {
 
@@ -145,6 +147,7 @@ namespace Inventory {
 
             if (useItem == null) return;
 
+            SfxManager.Play(AudioType.SfxPickup);
             useItem.isIngredient = false;
             useItem.coffeeType = coffeeItem.coffeeType;
             useItem.GetComponentsInChildren<Image>()[0].sprite = CoffeeThumbnails[(int) coffeeItem.coffeeType];
@@ -155,6 +158,7 @@ namespace Inventory {
 
             if (useItem == null) return;
             
+            SfxManager.Play(AudioType.SfxPickup);
             useItem.isIngredient = true;
             useItem.ingredientType = ingredient.ingredientType;
             useItem.GetComponentsInChildren<Image>()[0].sprite = IngredentThumbmails[(int) ingredient.ingredientType];

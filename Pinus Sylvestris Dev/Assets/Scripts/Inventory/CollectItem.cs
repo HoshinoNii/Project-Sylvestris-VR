@@ -2,7 +2,7 @@
 using Core.Audio;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using AudioType = Core.Audio.Enums.AudioType;
+
 
 namespace Inventory {
     public class CollectItem : MonoBehaviour, IPointerUpHandler{
@@ -52,8 +52,7 @@ namespace Inventory {
                 CoffeeItem coffee = GetComponent<CoffeeItem>();
                 Inventory.Instance.AddItem(GetComponent<Item>(), coffee);
             }
-            SfxManager.Play(AudioType.SfxPickup);
-
+            
             if (!hideOnCollect) return;
             
             gameObject.SetActive(false);
