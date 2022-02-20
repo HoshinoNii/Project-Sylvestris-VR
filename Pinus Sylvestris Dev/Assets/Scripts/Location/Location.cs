@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 namespace Location {
+    //Store general location data
     [System.Serializable]
     public class Location : MonoBehaviour
     {

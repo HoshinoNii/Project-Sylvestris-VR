@@ -27,6 +27,7 @@ namespace BaristaMachine {
         }
 
         private CoffeeType GetRecipe(List<IngredientType> ingredientTypes) {
+            // Loop through the recipes and find a match and return that coffee type.
             foreach (Recipe recipe in Instance.recipes) {
                 bool sequenceEqual = recipe.ingredients.SequenceEqual(ingredientTypes);
                 Debug.Log($"Sequence Equal: {sequenceEqual}");
@@ -35,7 +36,7 @@ namespace BaristaMachine {
                     return recipe.coffeeType;
                 }
             }
-            return CoffeeType.Coffee; // Return Questionable coffee
+            return CoffeeType.Coffee; // Return Questionable coffee if no match
         }
 
         private void PrepareCoffee() {
@@ -57,6 +58,7 @@ namespace BaristaMachine {
             AddIngredient();
         }
 
+        // Add ingredient to machine
         private void AddIngredient() {
             if (currentIngredients.Count > 4) return;
             SfxManager.Play(AudioType.SfxInteractWithBarista);
@@ -67,6 +69,7 @@ namespace BaristaMachine {
             currentIngredients.Add(item.ingredientType);
             SetItemAsUsed();
 
+            // if there is 4 ingredients prepare the coffee
             if (currentIngredients.Count >= 4) {
                 PrepareCoffee();
             }

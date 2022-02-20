@@ -35,12 +35,14 @@ namespace UI {
         }
 
         
+        // start the game
         public void Play() {
             SfxManager.Play(AudioType.SfxUIButtonClick);
             LocationManager.Instance.GotoLocation(LocationType.MainTable);
             LevelManager.Instance.StartGame();
         }
         
+        // Show credits gameobject
         public void ShowCredits() {
             DisableAll();
             SfxManager.Play(AudioType.SfxUIButtonClick);
@@ -49,6 +51,7 @@ namespace UI {
             AudioManager.Instance.PlayAudio(AudioType.BgmCredits, true, 2f, 0f, .2f, true);
         }
 
+        // Show main menu gameobject
         public void ShowMainMenu() {
             DisableAll();
             SfxManager.Play(AudioType.SfxUIButtonClick);
@@ -57,6 +60,7 @@ namespace UI {
             AudioManager.Instance.PlayAudio(AudioType.BgmMainMenu, true, 2f, 0f, .2f, true);
         }
 
+        // show instructions gameobject
         public void ShowInstructions() {
             DisableAll();
             SfxManager.Play(AudioType.SfxUIButtonClick);

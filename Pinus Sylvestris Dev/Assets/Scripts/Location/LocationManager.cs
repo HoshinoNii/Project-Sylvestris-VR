@@ -21,6 +21,7 @@ namespace Location {
             }
         }
         
+        
         public static Location GetLocation(LocationType type)
         {
             return Instance.locations.Find(x => x.type == type);
@@ -31,6 +32,7 @@ namespace Location {
             return Instance.locations[index];
         }
 
+        
         // Use this to change location based on index
         public void GotoLocation(int index)
         {

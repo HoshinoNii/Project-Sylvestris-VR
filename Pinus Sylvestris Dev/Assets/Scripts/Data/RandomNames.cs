@@ -4,6 +4,8 @@ using UnityEngine;
 
 namespace Data {
     public class RandomNames {
+        
+        // Random name list for the customer
         private static string[] randomNames = new string[] {
             "Michael Holmes",
             "Laughlin Ross",
@@ -17,6 +19,7 @@ namespace Data {
             "Elisabeth Reid",
         };
 
+        // pick a random name from that list
         public static string PickRandomName() {
             return randomNames[Random.Range(0, randomNames.Length)];
         }

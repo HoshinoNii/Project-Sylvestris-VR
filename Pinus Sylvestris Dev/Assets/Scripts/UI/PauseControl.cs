@@ -15,6 +15,7 @@ namespace UI {
         public Button mainMenuButton;
         public Button restartButton;
 
+        // Init the functions and attach the functions
         private void Awake() {
             pauseScreen.SetActive(false);
             pauseButton.onClick.AddListener(Pause);

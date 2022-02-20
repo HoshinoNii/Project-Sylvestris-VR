@@ -14,6 +14,7 @@ namespace ServingTray {
             ServeCustomer();
         }
 
+        // Serve the customer
         private void ServeCustomer() {
             CoffeeItem item = Inventory.Inventory.Instance.SelectedItem.GetComponent<CoffeeItem>();
             Debug.Log($"Not Served!");

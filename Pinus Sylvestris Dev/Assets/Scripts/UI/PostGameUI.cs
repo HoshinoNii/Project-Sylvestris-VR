@@ -13,11 +13,13 @@ namespace UI {
         public Button quitButton;
 
 
+        // attach button functionality
         private void Awake() {
             quitButton.onClick.AddListener(Utils.Quit);
             restartButton.onClick.AddListener(Utils.RestartScene);
         }
 
+        // update score text
         private void FixedUpdate() {
             scoreText.text = LevelManager.Instance.currentPoints.ToString();
         }

@@ -24,12 +24,15 @@ namespace Game {
             this.coffeeImage = coffeeImage;
         }
 
+        //Process the time
         public void ProcessTime(float value) {
             
+            // if timeLeft <= 0 return
             if (timeLeft <= 0) return;
             
             timeLeft -= value;
 
+            // if the time left has reached to the low time counter, set the score to the low point score.
             if (timeLeft < _lowPointTime) {
                 _pointsOnComplete = _lowPointOnComplete;
             }

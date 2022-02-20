@@ -42,9 +42,12 @@ namespace Inventory {
         }
 
         public void OnPointerUp(PointerEventData eventData) {
+            // Small delay to prevent spam
             if (!canTake) return;
             canTake = false;
             _currentCooldown = pickupCooldown;
+            
+            // If its an ingredient setup as a ingredient, else setup as a coffee
             if (isIngredient) {
                 Ingredient ingredient = GetComponent<Ingredient>();
                 Inventory.Instance.AddItem(GetComponent<Item>(), ingredient);
@@ -60,6 +63,7 @@ namespace Inventory {
             transform.position = new Vector3(9000, 9000, 9000);
         }
 
+        // Anim control
         public void OnPointerEnter(PointerEventData eventData) {
             GetComponent<Animator>()?.SetBool("Hovering", true);
         }

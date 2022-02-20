@@ -9,6 +9,7 @@ namespace UI {
         [SerializeField] private List<GameObject> texts = new List<GameObject>();
         private BaristaMachine.BaristaMachine BaristaMachine => GetComponentInParent<BaristaMachine.BaristaMachine>();
 
+        // Hide all the text
         private void HideAllObjects() {
             foreach (GameObject text in texts) {
                 text.GetComponentInChildren<TextMeshProUGUI>().text = "";
@@ -17,9 +18,9 @@ namespace UI {
         }
         private void FixedUpdate() {
             UpdateUI();
-           
         }
 
+        // Show the current ingredients
         private void UpdateUI() {
             HideAllObjects();
             for (int i = 0; i < BaristaMachine.Ingredients.Count; i++) {

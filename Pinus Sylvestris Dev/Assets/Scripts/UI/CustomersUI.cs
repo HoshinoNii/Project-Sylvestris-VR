@@ -9,12 +9,14 @@ namespace UI {
         public static CustomersUI Instance { get; private set; }
         public List<GameObject> customerElements = new List<GameObject>();
 
+        // Disable all the customers
         private void DisableAllCustomerElements() {
             foreach (GameObject customerElement in customerElements) {
                 customerElement.SetActive(false);
             }
         }
 
+        // Update the current Customers
         private void UpdateElements() {
             List<Customer> customers = CustomerManager.Instance.currentCustomers.ToList();
             for (int i = 0; i < customers.Count; i++) {

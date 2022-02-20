@@ -38,9 +38,12 @@ namespace Game {
         private void Update() {
             if (LevelManager.Instance.State == LevelState.PreGame || LevelManager.Instance.State == LevelState.GameOver) return;
             
+            // Start counting down.
             foreach (Customer customer in currentCustomers.ToArray()) {
                 customer.ProcessTime(Time.deltaTime);
             }
+            
+            // If current time is less than 0 we add a new customer with a random coffee requirement
             if (_currentTime <= 0) {
                 CreateCustomer(coffeeTypes[Random.Range(0, coffeeTypes.Length)]);
                 _currentTime = timeBeforeNewCustomer;
@@ -53,15 +56,22 @@ namespace Game {
             LevelManager.Instance.currentPoints += i;
         }
 
+        // Remove once done
         public void RemoveCustomer(Customer customer) {
             if (!currentCustomers.Contains(customer)) return;
             currentCustomers.Remove(customer);
             
         }
 
+        
+        // This is called when the coffee is delivered to the tray
         public void ServeCustomer(CoffeeType coffeeType) {
+            // Get all the customers that needs this coffee type
             List<Customer> customers = currentCustomers.FindAll(x => x.coffee == coffeeType);
+            // Order them by the lowest time left
             List<Customer> orderedCustomers = customers.OrderBy(x => x.timeLeft).ToList();
+            
+            // if there are customers, complete the first in its list
             if (orderedCustomers.Count > 0) {
                 orderedCustomers[0].Complete();
             }

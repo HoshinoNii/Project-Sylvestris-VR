@@ -80,6 +80,7 @@ namespace Game {
 
         
         
+        // Coroutine for Start Game
         IEnumerator CoroStartGame() {
             AudioManager.Instance.StopAll();
             AudioManager.Instance.PlayAudio(AudioType.BgmGame, true, 2f, 0f, .2f, true);
@@ -87,6 +88,7 @@ namespace Game {
             State = LevelState.Game;
         }
 
+        // Coroutine for Game Over
         IEnumerator CoroEndGame() {
             AudioManager.Instance.StopAll();
             AudioManager.Instance.PlayAudio(AudioType.BgmPostGame, true, 2f, 0f, .2f, true);

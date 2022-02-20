@@ -13,10 +13,12 @@ namespace UI {
         public Image progressSlider;
 
 
+        // Set the Customer Class
         public void SetCustomer(Customer customer) {
             customerData = customer;
         }
 
+        // link up Customer Class data with the UI
         private void MapData() {
             if (customerData == null) return;
             name.text = customerData.name;
