@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Game;
 using UnityEngine;
 
@@ -15,7 +16,7 @@ namespace UI {
         }
 
         private void UpdateElements() {
-            List<Customer> customers = CustomerManager.Instance.currentCustomers;
+            List<Customer> customers = CustomerManager.Instance.currentCustomers.ToList();
             for (int i = 0; i < customers.Count; i++) {
                 customerElements[i].SetActive(true);
                 customerElements[i].GetComponent<CustomerElement>().SetCustomer(customers[i]);
@@ -26,6 +27,10 @@ namespace UI {
         private void Awake() {
             Instance = this;
             DisableAllCustomerElements();
+        }
+
+        private void Update() {
+            UpdateCustomerElements();
         }
 
         public void UpdateCustomerElements() {

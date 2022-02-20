@@ -15,8 +15,6 @@ namespace Data {
             "Sarah Hunter",
             "Barbara Shaw",
             "Elisabeth Reid",
-            "Terry",
-            "Hamzehhhh",
         };
 
         public static string PickRandomName() {

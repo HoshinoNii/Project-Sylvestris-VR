@@ -25,7 +25,7 @@ namespace UI {
             progressSlider.fillAmount = customerData.timeLeft / 100;
         }
 
-        private void Update() {
+        private void FixedUpdate() {
             MapData();
         }
     }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Game {
     
+    [System.Serializable]
     public class Customer {
         [SerializeField] public CoffeeType coffee;
         [SerializeField] public float timeLeft;

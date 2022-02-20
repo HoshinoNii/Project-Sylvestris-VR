@@ -21,7 +21,7 @@ namespace Game {
         public int maxCustomers;
         
         
-        [SerializeField] public List<Customer> currentCustomers = new List<Customer>();
+        public List<Customer> currentCustomers = new List<Customer>();
 
         private void Awake() {
             Instance = this;
@@ -33,13 +33,12 @@ namespace Game {
             Customer customer = new Customer(coffee, timeOutDuration, lowScoreDuration, pointsOnComplete,
                 lowPointsOnComplete, RandomNames.PickRandomName(), CoffeeThumbmailSprites.Instance.images[(int)coffee]);
             currentCustomers.Add(customer);
-            CustomersUI.Instance.UpdateCustomerElements();
         }
 
         private void Update() {
-            if (LevelManager.Instance.State == LevelState.PreGame) return;
+            if (LevelManager.Instance.State == LevelState.PreGame || LevelManager.Instance.State == LevelState.GameOver) return;
             
-            foreach (Customer customer in currentCustomers) {
+            foreach (Customer customer in currentCustomers.ToArray()) {
                 customer.ProcessTime(Time.deltaTime);
             }
             if (_currentTime <= 0) {
@@ -57,13 +56,15 @@ namespace Game {
         public void RemoveCustomer(Customer customer) {
             if (!currentCustomers.Contains(customer)) return;
             currentCustomers.Remove(customer);
-            CustomersUI.Instance.UpdateCustomerElements();
+            
         }
 
         public void ServeCustomer(CoffeeType coffeeType) {
             List<Customer> customers = currentCustomers.FindAll(x => x.coffee == coffeeType);
             List<Customer> orderedCustomers = customers.OrderBy(x => x.timeLeft).ToList();
-            orderedCustomers[0].Complete();
+            if (orderedCustomers.Count > 0) {
+                orderedCustomers[0].Complete();
+            }
         } 
     }
 }
