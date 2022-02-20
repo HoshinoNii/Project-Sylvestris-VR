@@ -48,8 +48,6 @@ namespace Game {
             } else {
                 _currentTime -= Time.deltaTime;
             }
-            
-            
         }
 
         public void AddPoints(int i) {

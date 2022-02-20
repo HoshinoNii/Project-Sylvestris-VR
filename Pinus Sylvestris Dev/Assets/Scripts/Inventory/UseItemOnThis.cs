@@ -1,8 +1,9 @@
 ﻿using Data;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Inventory {
-    public class UseItemOnThis : MonoBehaviour {
+    public class UseItemOnThis : MonoBehaviour, IPointerUpHandler {
         
         public ItemType itemType;
         public bool anyTypeCanGoIn;
@@ -20,7 +21,7 @@ namespace Inventory {
             if (GetComponent<Used>() == null) this.gameObject.AddComponent<Used>();
         }
 
-        private void OnMouseDown() {
+        public void OnPointerUp(PointerEventData eventData) {
             if (Inventory.Instance.SelectedItem) {
                 
                 if (anyTypeCanGoIn) {

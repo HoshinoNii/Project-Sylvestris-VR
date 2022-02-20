@@ -1,10 +1,11 @@
 ﻿using System;
 using Core.Audio;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using AudioType = Core.Audio.Enums.AudioType;
 
 namespace Inventory {
-    public class CollectItem : MonoBehaviour {
+    public class CollectItem : MonoBehaviour, IPointerUpHandler{
         //public Color mouseOverColor = Color.blue;
         //private Color originalColor;
         //public GameObject Outline;
@@ -40,7 +41,7 @@ namespace Inventory {
                 _currentCooldown -= Time.deltaTime;
         }
 
-        private void OnMouseDown() {
+        public void OnPointerUp(PointerEventData eventData) {
             if (!canTake) return;
             canTake = false;
             _currentCooldown = pickupCooldown;

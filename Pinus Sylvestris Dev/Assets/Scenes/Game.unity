@@ -3668,7 +3668,7 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
   - name: 5
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: abdf7a08a75a918459ab337dc435b0d8, type: 3}
     volume: 0.5
     pitch: 1
     source: {fileID: 0}
@@ -10110,7 +10110,6 @@ MonoBehaviour:
   - {fileID: 1442860144}
   - {fileID: 247735692}
   - {fileID: 1221678429}
-  - {fileID: 0}
   - {fileID: 1649559182}
 --- !u!1 &2017905753
 GameObject:
@@ -10508,6 +10507,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4942171868089674409, guid: af0bd8a8906ddbb49bec91309ff99158,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1560697401}
     - target: {fileID: 6375063946619170229, guid: af0bd8a8906ddbb49bec91309ff99158,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -10598,6 +10602,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6375063947874120637, guid: af0bd8a8906ddbb49bec91309ff99158,
+        type: 3}
+      propertyPath: m_CellSize.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375063947874120637, guid: af0bd8a8906ddbb49bec91309ff99158,
+        type: 3}
+      propertyPath: m_CellSize.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375063948618675853, guid: af0bd8a8906ddbb49bec91309ff99158,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1560697401}
     - target: {fileID: 6375063948618675854, guid: af0bd8a8906ddbb49bec91309ff99158,
         type: 3}
       propertyPath: CursorImage

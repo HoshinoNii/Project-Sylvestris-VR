@@ -20,6 +20,10 @@ namespace Inventory {
         public static Inventory Instance {
             get { return _instance; }
         }
+        
+        public int tapCount;
+        public float maxDoubleTapTime;
+        public float newTime;
 
         private static Inventory _instance;
 
@@ -59,7 +63,31 @@ namespace Inventory {
                 if (SelectedItem) SelectedItem.UI_Item.SetActive(true);
                 SelectedItem = null;
             }
+            
+            // Mobile Input Detection
+            if (Input.touchCount == 1) {
+                Touch touch = Input.GetTouch (0);
+             
+                if (touch.phase == TouchPhase.Ended) {
+                    tapCount += 1;
+                }
+ 
+                if (tapCount == 1) {
+                 
+                    newTime = Time.time + maxDoubleTapTime;
+                }else if(tapCount == 2 && Time.time <= newTime){
+                    CursorImage.gameObject.SetActive(false);
+                    if (SelectedItem) SelectedItem.UI_Item.SetActive(true);
+                    SelectedItem = null;
+                    tapCount = 0;
+                }
+ 
+            }
+            if (Time.time > newTime) {
+                tapCount = 0;
+            }
         }
+    
 
         public void UseItem(Item item) {
             if (SelectedItem) SelectedItem.UI_Item.SetActive(true);
