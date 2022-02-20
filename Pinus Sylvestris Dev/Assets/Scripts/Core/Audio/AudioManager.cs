@@ -36,6 +36,7 @@ namespace Core.Audio {
 			GenerateAudioTable();
 		}
 
+		// Init setting up the hashtable.
 		private void GenerateAudioTable() {
 			foreach (AudioTrack track in tracks) {
 				foreach (AudioObject audioObj in track.audio)
@@ -51,6 +52,7 @@ namespace Core.Audio {
 		}
 
 		private void Dispose() {
+			// Clear out everything
 			foreach (DictionaryEntry entry in _jobTable) {
 				Coroutine job = (Coroutine) entry.Value;
 				StopCoroutine(job);
@@ -62,12 +64,14 @@ namespace Core.Audio {
 		}
 		
 
+		// Main Audio Running
 		private IEnumerator RunAudioJob(AudioJob job) {
 			AudioTrack track = (AudioTrack) _audioTable[job.Type];
 			track.source.clip = GetAudioClipFromTrack(job.Type, track);
 			track.source.loop = job.Loop;
 			track.source.volume = job.Volume;
 
+			// Switch between the actions
 			switch (job.Action) {
 				case AudioAction.Start:
 					track.source.Play();
@@ -81,6 +85,7 @@ namespace Core.Audio {
 					break;
 			}
 
+			// If we set Fade as true
 			if (job.Fade) {
 				float initial = job.Action == AudioAction.Start || job.Action == AudioAction.Restart ? 0 : job.Volume;
 				float target = initial == 0 ? job.Volume : 0;
