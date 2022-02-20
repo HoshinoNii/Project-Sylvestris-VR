@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Core.Audio;
+using Core.Utils;
 using Location;
 using UnityEngine;
 using AudioType = Core.Audio.Enums.AudioType;
@@ -76,6 +77,9 @@ namespace Game {
         public void StartGame() {
             StartCoroutine(CoroStartGame());
         }
+
+        
+        
         IEnumerator CoroStartGame() {
             AudioManager.Instance.StopAll();
             AudioManager.Instance.PlayAudio(AudioType.BgmGame, true, 2f, 0f, .2f, true);

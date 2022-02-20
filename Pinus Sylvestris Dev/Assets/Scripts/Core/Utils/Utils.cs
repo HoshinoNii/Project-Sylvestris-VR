@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Core.Utils {
     public static class Utils  {
@@ -12,8 +13,6 @@ namespace Core.Utils {
                     material.color.a - Time.deltaTime / time);
                 yield return null;
             }
-            
-            
         }
         
         public static string ConvertFloatToTime(float value) {
@@ -23,6 +22,11 @@ namespace Core.Utils {
 
         public static void Quit() {
             Application.Quit();
+        }
+
+        public static void RestartScene() {
+            Time.timeScale = 1;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex ) ;
         }
     }
 }

@@ -15,9 +15,7 @@ namespace UI {
 
         private void Awake() {
             quitButton.onClick.AddListener(Utils.Quit);
-            restartButton.onClick.AddListener(() => {
-                SceneManager.LoadScene( SceneManager.GetActiveScene().buildIndex ) ;
-            });
+            restartButton.onClick.AddListener(Utils.RestartScene);
         }
 
         private void FixedUpdate() {
