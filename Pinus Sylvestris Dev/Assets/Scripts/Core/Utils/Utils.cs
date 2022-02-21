@@ -12,7 +12,7 @@ namespace Core.Utils {
             // Fade to transparent
             while (fadeOut ? material.color.a > 0.0f : material.color.a < 1.0f) {
                 material.color = new Color(material.color.r, material.color.g, material.color.b,
-                    material.color.a - Time.deltaTime / time);
+                    material.color.a - Time.unscaledDeltaTime / time);
                 yield return null;
             }
         }

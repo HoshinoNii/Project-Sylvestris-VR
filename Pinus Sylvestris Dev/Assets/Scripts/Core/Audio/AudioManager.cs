@@ -83,6 +83,12 @@ namespace Core.Audio {
 					track.source.Stop();
 					track.source.Play();
 					break;
+				case AudioAction.Pause:
+					track.source.Pause();
+					break;
+				case AudioAction.Resume:
+					track.source.Play();
+					break;
 			}
 
 			// If we set Fade as true
@@ -178,6 +184,16 @@ namespace Core.Audio {
 		public void StopAll(bool fadeOut = false, float fadeDuration = 0, float delay = 0, float volume = 1) {
 			foreach (AudioType type in _audioTypesCurrentlyPlaying.ToArray())
 				AddJob(new AudioJob(AudioAction.Stop, type, fadeOut, fadeDuration, delay, volume));
+		}
+		
+		public void Pause(AudioType type, bool fadeOut = false, float fadeDuration = 0, float delay = 0,
+		                  float volume = 1, bool looping = false) {
+			AddJob(new AudioJob(AudioAction.Pause, type, fadeOut, fadeDuration, delay, volume, looping));
+		}
+		
+		public void Resume(AudioType type, bool fadeOut = false, float fadeDuration = 0, float delay = 0,
+		                  float volume = 1, bool looping = false) {
+			AddJob(new AudioJob(AudioAction.Resume, type, fadeOut, fadeDuration, delay, volume, looping));
 		}
 
 		#endregion

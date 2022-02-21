@@ -6,9 +6,11 @@ using UnityEngine.EventSystems;
 
 namespace Inventory {
     public class CollectItem : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler {
-        //public Color mouseOverColor = Color.blue;
-        //private Color originalColor;
-        //public GameObject Outline;
+        public Renderer r;
+        public Color originalColor;
+        public Color mouseOverColor = Color.blue;
+        private Color _originalColor;
+        public GameObject outline;
 
         public float pickupCooldown;
         private float _currentCooldown;
@@ -20,8 +22,8 @@ namespace Inventory {
         public AudioClip clip;
 
         private void Start() {
-            //r = GetComponent<Renderer>();
-            //originalColor = r.material.color;
+            r = GetComponentInChildren<Renderer>();
+            originalColor = r.material.color;
         }
 
         private void OnMouseEnter() {
@@ -65,10 +67,12 @@ namespace Inventory {
 
         // Anim control
         public void OnPointerEnter(PointerEventData eventData) {
+            r.material.color = mouseOverColor;
             GetComponent<Animator>()?.SetBool("Hovering", true);
         }
 
         public void OnPointerExit(PointerEventData eventData) {
+            r.material.color = originalColor;
             GetComponent<Animator>()?.SetBool("Hovering", false);
         }
     }

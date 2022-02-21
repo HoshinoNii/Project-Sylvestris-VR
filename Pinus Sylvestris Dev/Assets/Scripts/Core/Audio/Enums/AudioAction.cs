@@ -2,6 +2,8 @@
 	public enum AudioAction {
 		Start,
 		Stop,
-		Restart
+		Restart,
+		Pause,
+		Resume
 	}
 }

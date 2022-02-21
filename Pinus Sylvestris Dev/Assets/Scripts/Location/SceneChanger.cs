@@ -46,19 +46,19 @@ namespace Location {
             {
                 // Fade the quad object in and delay for 0.75 seconds
                 StartCoroutine(Utils.Fade(0.75f, fader.GetComponent<Renderer>().material, false));
-                yield return new WaitForSeconds(0.75f);
+                yield return new WaitForSecondsRealtime(0.75f);
 
                 // Change camera position
-                UnityEngine.Camera.main.transform.parent.position = nextSphere.position;
+                Camera.main.transform.parent.position = nextSphere.position;
 
                 // Fade out the quad object
                 StartCoroutine(Utils.Fade(0.75f, fader.GetComponent<Renderer>().material, true));
-                yield return new WaitForSeconds(0.75f);
+                yield return new WaitForSecondsRealtime(0.75f);
             }
             else
             {
                 // No fader, so just swap the camera position
-                UnityEngine.Camera.main.transform.parent.position = nextSphere.position;
+                Camera.main.transform.parent.position = nextSphere.position;
             }
         }
     }

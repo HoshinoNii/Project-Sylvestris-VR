@@ -66,5 +66,9 @@ namespace UI {
             SfxManager.Play(AudioType.SfxUIButtonClick);
             instructionsScreen.SetActive(true);
         }
+
+        public void Quit() {
+            Utils.Quit();
+        }
     }
 }

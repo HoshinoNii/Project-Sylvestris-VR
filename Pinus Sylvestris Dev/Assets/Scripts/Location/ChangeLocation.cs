@@ -29,7 +29,7 @@ namespace Location {
             animator.SetTrigger(FadeOutTrigger);
             animator.ResetTrigger(FadeInTrigger);
 
-            yield return new WaitForSeconds(2.0f);
+            yield return new WaitForSecondsRealtime(1.5f);
 
             animator.SetTrigger(FadeInTrigger);
             animator.ResetTrigger(FadeOutTrigger);
